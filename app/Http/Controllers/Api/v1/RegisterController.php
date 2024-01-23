@@ -21,14 +21,14 @@ class RegisterController extends Controller
             unset($request['password_confirmation']);
 
             $new_user = User::create($request->validated());
-            $api_token = $new_user->createToken('Auth Api Token')->plainTextToken;
+            $api_token = $new_user->createToken('Register API Token')->plainTextToken;
 
             DB::commit();
 
             return response()->json([
-                'status'  => 'success',
-                'message' => 'User registered successfully',
-                'token'   => $api_token
+                'status'       => 'success',
+                'message'      => 'User registered successfully',
+                'access_token' => $api_token
             ], JsonResponse::HTTP_OK);
 
         } catch (\Throwable $e)

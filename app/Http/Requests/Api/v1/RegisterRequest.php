@@ -41,7 +41,7 @@ class RegisterRequest extends FormRequest
                 'status'  => 'error',
                 'message' => 'Validation failed',
                 'errors'  => $validator->errors(),
-            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY)
+            ], JsonResponse::HTTP_UNAUTHORIZED)
         );
     }
 }
