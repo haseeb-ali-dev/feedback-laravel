@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests\Api\v1;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
-class CategoryRequest extends FormRequest
+class FeedbackRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,10 +16,10 @@ class CategoryRequest extends FormRequest
 
     public function rules()
     {
-        return $this->isMethod('patch') ? [
-            'title' => 'required|min:3|max:255|unique:categories,title,' . $this->id,
-        ] : [
-            'title' => 'required|min:3|max:255|unique:categories,title'
+        return [
+            'title'       => 'required|min:3|max:255',
+            'description' => 'sometimes',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 

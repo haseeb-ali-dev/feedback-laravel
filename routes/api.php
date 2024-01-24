@@ -18,5 +18,6 @@ Route::prefix('v1')->as('api.v1.')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         require __DIR__ . '/api/v1/category.php';
+        require __DIR__ . '/api/v1/feedback.php';
     });
 });
