@@ -10,6 +10,8 @@ class Feedback extends Model
 
     protected $fillable = ['title', 'description', 'user_id', 'category_id'];
 
+    protected $hidden = ['user_id', 'category_id', 'updated_at'];
+
     public function category()
     {
         return $this->belongsTo(Category::class)->withTrashed();

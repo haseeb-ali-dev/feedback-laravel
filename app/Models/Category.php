@@ -10,4 +10,6 @@ class Category extends Model
     use SoftDeletes;
 
     protected $fillable = ['title'];
+
+    protected $hidden = ['updated_at', 'deleted_at'];
 }
