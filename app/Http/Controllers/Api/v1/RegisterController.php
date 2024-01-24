@@ -28,7 +28,8 @@ class RegisterController extends Controller
             return response()->json([
                 'status'       => 'success',
                 'message'      => 'User registered successfully',
-                'access_token' => $api_token
+                'access_token' => $api_token,
+                'token_type'   => 'Bearer',
             ], JsonResponse::HTTP_OK);
 
         } catch (\Throwable $e)
