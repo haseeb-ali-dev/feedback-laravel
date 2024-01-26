@@ -14,7 +14,9 @@ class FeedbackController extends Controller
     {
         $limit = request('limit', 25);
 
-        $feedbacks = Feedback::with(['category:id,title', 'user:id,name'])->orderBy('created_at', 'desc')
+        $feedbacks = Feedback::with(['category:id,title', 'user:id,name'])
+            ->withCount('comments')
+            ->orderBy('created_at', 'desc')
             ->simplePaginate($limit);
 
         return response()->json([
